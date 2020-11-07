@@ -11,7 +11,7 @@
    其实list.sort()就会给各个字符串按字母表顺序和长度排好序
 '''
 
-'''看到他人的解法是反转+排序后，自己写出了代码
+'''看到他人的解法是反转+排序后
 '''
 
 class Solution(object):
@@ -25,7 +25,7 @@ class Solution(object):
 		for i in range(len(words) - 1):
 			#'me' in 'time' == True
 			if words[i+1].startswith(words[i]):continue
-		else: res += len(words[i]) + 1
+			else: res += len(words[i]) + 1
 		#这里要注意不管如何都要把最后一个元素的长度加进去，
 		#因为上面的遍历没有考虑最后一个元素
 		res += len(words[-1]) + 1
