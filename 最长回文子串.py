@@ -4,9 +4,9 @@
 #优化解法
 def longestPalindrome(self, s):
 	if not s: return ""
-     length = len(s)
+    length = len(s)
     if length == 1 or s == s[::-1]: return s
-        max_len,start = 1,0
+    max_len,start = 1,0
     for i in range(1, length):
         even = s[i-max_len:i+1]
         odd = s[i-max_len-1:i+1]
