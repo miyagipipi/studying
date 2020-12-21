@@ -23,3 +23,29 @@ class Solution:
         newHead = reverseNode(a, b)
         a.next = self.reverseKGroup(b, k)
         return newHead
+
+#自己写的
+class Solution:
+    def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        #if not head: return None
+        pre = None
+        now = nex = head
+        for i in range(k):
+            if now == None: return head
+            now = now.next
+            
+            
+        now = head
+        for i in range(k):
+            nex = now.next
+            now.next = pre
+            pre = now
+            now = nex
+        
+        head.next = self.reverseKGroup(now, k)
+        return pre
+'''没有特意去写一个reverse函数，而是先将now作为侦查兵，
+去看有没有k个节点能满足要求（L33-L35)
+这里我之前写的是range(k-1)，因为34行和35行的顺序是倒着的，
+导致无法解决一些问题（节点数正好是k的整数倍），所以加了第30行才解决。
+但实际上把34和35行换一下位置，就可以range(k)了。
