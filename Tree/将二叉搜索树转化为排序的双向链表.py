@@ -1,34 +1,21 @@
 class Solution:
     def treeToDoublyList(self, root: 'Node') -> 'Node':
-        def helper(node):
-            """
-            Performs standard inorder traversal:
-            left -> node -> right
-            and links all nodes into DLL
-            """
-            nonlocal last, first
-            if node:
-                # left
-                helper(node.left)
-                # node 
-                if last:
-                    # link the previous node (last)
-                    # with the current one (node)
-                    last.right = node
-                    node.left = last
-                else:
-                    # keep the smallest node
-                    # to close DLL later on
-                    first = node        
-                last = node
-                # right
-                helper(node.right)
-        
-        if not root:
-            return None
         first, last = None, None
-        helper(root)
-        # close DLL
-        last.right = first
+
+        def dfs(root):
+            nonlocal first, last
+            if root:
+                dfs(root.left)
+                if not last:
+                    first = root
+                else:
+                    last.right = root
+                    root.left = last
+                last = root
+                dfs(root.right)
+        
+        if not root: return None
+        dfs(root)
         first.left = last
+        last.right = first
         return first
