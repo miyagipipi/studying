@@ -43,13 +43,13 @@ class Solution:
         def helper(root):
             if not root:
                 return 0
-            left = helper(root.left)
-            right = helper(root.right)
+            left = helper(root.left) #当前节点对应左子树高度
+            right = helper(root.right) #当前节点对应右子树高度
             height = max(left, right) #当前节点的高度
-            if len(res) == height:
+            if len(res) == height:  #res中没有对应索引为height的元素，此时最大索引为height-1
                 res.append([])
-            res[height].append(root.val)
-            return height + 1
+            res[height].append(root.val) #将高度为height的节点值加入到索引为height的数组中
+            return height + 1 #高度加一，返回给上一层
         helper(root)
         return res
             
@@ -59,4 +59,5 @@ class Solution:
 高度为2一组，......直到根节点
 这样只用遍历一次树就完成了，时间复杂度O(n)
 遍历顺序为后续遍历
+某节点的高度为他的某一路径上的最大子孙节点个数，叶子节点的高度为0
 '''

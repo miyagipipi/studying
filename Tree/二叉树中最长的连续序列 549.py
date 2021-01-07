@@ -31,6 +31,9 @@ class Solution:
                 elif root.val == root.right.val - 1:
                     d = max(d, r[1] + 1)
             #i + d计算了两次根节点，所以要减一
+            #为什么是i + d - 1:
+            #以i来解释，它表示包含当前节点的左子树和右子树递增序列中的最大值
+            #如果它是左子树递增，那它还可以加上右子树的递减序列最大值d
             self.ans = max(self.ans, i + d -1)
             return [i, d]
         dfs(root)

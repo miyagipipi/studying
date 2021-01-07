@@ -25,7 +25,7 @@ class Solution:
             nonlocal res, cur
             while root != p:
                 if root.val > p.val:
-                    cur = root
+                    cur = root #只有当root的值大于p节点的值时才标记root
                     root = root.left
                 elif root.val < p.val:
                     root = root.right
@@ -71,5 +71,5 @@ class Solution:
 prev记录这个节点
 
 可以直接中序遍历搜索，也可以先判断p节点的右子树再中序遍历
-前者代码简洁，后者一般耗时少
+前者代码简洁，后者相对耗时少
 '''
