@@ -20,7 +20,7 @@ class Solution:
                 else:
                     stack[-1].right = node     # 反之，node为其右子树
             stack.append(node)                 # 将node压入栈中
-            return [None,1]                    # 返回None和1，分别作为整数num和标志flag的初始值
+            return [None,1]                    # 返回None和1，分数别作为整num和标志flag的初始值
 
         num, flag, stack = None, 1, []         # 对num, flag和栈进行初始化
 
@@ -41,4 +41,4 @@ class Solution:
                 num = (num*10 + flag*int(c)) if num else flag*int(c)
         
         return stack[0] if stack else TreeNode(num)    # 如果stack非空，返回最顶端的节点，即root
-                                                        # 否则返回以num为值的节点
+                                                        # 否则则说明s只有一个数组，只用返回节点num

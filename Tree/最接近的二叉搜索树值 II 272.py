@@ -31,7 +31,7 @@ class Solution:
 #他人解法2
 #中序遍历加二分搜索
         tmp = []
-        # 先进行中序遍历，得到有序数组
+        # 先进行中序遍历，得到单调递增数组
         def helper(root):
             if not root:
                 return []
@@ -39,7 +39,9 @@ class Solution:
             tmp.append(root.val)
             helper(root.right)
         helper(root)
-        # 完全变成了658题找到K个最接近的元素
+        # 完全变成了最658题找到K个接近的元素
+        #假设 mid 是左边界，则当前区间覆盖的范围是 [mid, mid + k -1]. 
+        #如果发现 a[mid] 与 x 距离比 a[mid + k] 与 x 的距离要大，说明解一定在右侧。
         n = len(tmp)
         left = 0
         right = n - k
