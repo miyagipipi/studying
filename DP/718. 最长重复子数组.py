@@ -20,3 +20,9 @@ class Solution:
                 dp[i][j] = dp[i-1][j-1] + 1 if nums1[i-1] == nums2[j-1] else 0
                 res = max(res, dp[i][j])
         return res
+'''
+dp[i][j]:nums[:i]和nums[:j]中的最大重复子数组的长度
+它在nums1[i-1] == nums2[j-1]的情况下等于dp[i-1][j-1] + 1
+而如果nums1[i-1] ！= nums2[j-1]，则将它设置为0
+用一个res变量来维护每次得到的dp[i][j]和res中的最大值
+'''

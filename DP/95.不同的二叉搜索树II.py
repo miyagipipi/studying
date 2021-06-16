@@ -29,7 +29,8 @@ class Solution:
             for i in range(start, end+1):
                 #要保证end也能作为根节点，所以这里要end+1
                 leftTrees = GT(start, i-1)
-                rightTrees = GT(i+1, end)
+                rightTrees = GT(i+1, end) 
+                #注意这里是end而不是end+1,这是当i=end时能返回[None]的处理
 
                 for l in leftTrees:
                     for r in rightTrees:
