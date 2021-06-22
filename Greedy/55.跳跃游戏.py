@@ -24,6 +24,6 @@ class Solution:
         n = len(nums)
         k = n-1
         for i in range(n-2,-1,-1):
-            if nums[i]>=k-i:
-                k=i
+            if i + nums[i]>=k: #当前位置+当前位置允许跳跃的位置 >= 目标（即最后一个位置）
+                k=i            #将目标更新为当前位置
         return k==0
